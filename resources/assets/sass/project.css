@@ -1,0 +1,15 @@
+.top-bar {
+  background-color: #006666; }
+
+.log-in-form {
+  border: 1px solid #cacaca;
+  margin-top: 40%;
+  border-radius: 3px;
+  margin-left: 60%; }
+
+.side-navigation {
+  width: 150px;
+  background-color: #006666;
+  display: block; }
+
+/*# sourceMappingURL=project.css.map */
