@@ -21,8 +21,11 @@
         ]) !!};
     </script>
 </head>
-<div id="app">
+<div>
     <img src="./images/cytonn-investments.png" style="width=80px; height: 50px; float=right;">
+</div>
+<div id="app">
+
     {{-- The Navigation bar starts here--}}
     {{--authentication--}}
 </div>
@@ -85,14 +88,16 @@
         <div class="main-section">
             <div class="side-navigation" style="height: 800px; width: 300px; background-color: whitesmoke; margin-top: 50px;">
                 <ul class="menu vertical">
-                    <li ><a href="#"></i>Home</a></li>
-                    <li ><a href="/admin/categories"></i>Categories</a></li>
-                    <li><a href="/admin/products">Products</a></li>
-                    <li class="divider"> Manage  clients</li>
-                    <li><a href="#">Client Enquiries</a></li>
-                    <li><a href="#">Client Notifications</a></li>
-                    <li class="divider"> Reports</li>
-                    <li><a href="#">products</a></li>
+                    <li ><a href="#"></i>Home</a></li><hr/>
+                    <li class="divider"> Manage  Products</li><hr/>
+                    <li ><a href="/admin/categories"></i>Categories</a></li><hr/>
+                    <li><a href="/admin/products">Products</a></li><hr/>
+                    <li><a href="/admin/products">View Products</a></li><hr/>
+                    <li class="divider"> Manage  clients</li><hr/>
+                    <li><a href="#">Client Enquiries</a></li><hr/>
+                    <li><a href="#">Client Notifications</a></li><hr/>
+                    <li class="divider"> Reports</li><hr/>
+                    <li><a href="#">products</a></li><hr/>
                 </ul>
             </div>
             <div class="">

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product');
+$products = Product::all();
+
+return view('admin/viewproducts',['products'=>$products]);
+
     }
 
     /**
@@ -21,10 +29,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
 
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +39,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+        $product->category_id=$request->category_id;
+        $product->name=$request->name;
+        $product->price=$request->price;
+        $product->description=$request->description;
+
+        $product->save();
+        return redirect('admin/products')->with('saved_successfully','Products successfully saved');
+
     }
 
     /**

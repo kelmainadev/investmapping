@@ -63,29 +63,17 @@
 /******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 43);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports) {
+/******/ ({
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
-(function webpackMissingModule() { throw new Error("Cannot find module \"/home/vagrant/Code/investmapping/resources/assets/js/project.js\""); }());
-__webpack_require__(0);
-module.exports = __webpack_require__(1);
+(function webpackMissingModule() { throw new Error("Cannot find module \"/Users/kwangari/LaravelProjects/repeat/resources/assets/js/project.js\""); }());
 
 
 /***/ })
-/******/ ]);
+
+/******/ });

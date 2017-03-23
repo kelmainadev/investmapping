@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@product');
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/products','AdminController@products');
+Route::get('/admin/categories','AdminController@categories');
+Route::post('/admin/categories/store','CategoryController@store');
+Route::post('/admin/product/store','ProductController@store');
+Route::get('/admin/products/view','ProductController@index');
 
 Route::group(['prefix' => 'client'], function () {
   Route::get('/login', 'ClientAuth\LoginController@showLoginForm');
@@ -32,6 +37,11 @@ Route::group(['prefix' => 'client'], function () {
   Route::post('/password/reset', 'ClientAuth\ResetPasswordController@reset');
   Route::get('/password/reset', 'ClientAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'ClientAuth\ResetPasswordController@showResetForm');
+//  Route::get('/home','HomeController@index');
 });
-Route::get('/admin/products','ProductController@index');
+Route::get('/client/products','ClientController@index');
+
+
+
+
 

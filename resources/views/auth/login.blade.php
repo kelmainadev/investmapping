@@ -3,7 +3,7 @@
 @section('content')
 <div class="login-container">
     <div class="bg-image">
-        <div class="row">
+        <div class="row" style="margin-left: 40%;">
             <div class="medium-4 medium-centered large-6 large-centered columns">
 
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">

@@ -30,8 +30,8 @@
             <ul class="menu dropdown">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ url('/client/login') }}">Login</a></li>
+                    <li><a href="{{ url('/client/register') }}">Register</a></li>
                 @else
                     <li class="menu align-right">
 
