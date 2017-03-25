@@ -1,25 +1,21 @@
     @extends('layouts.app')
 
     @section('content')
-        {{--<div id="app">--}}
-            {{--<example></example>--}}
-
-        {{--</div>--}}
-        {{--@{{ msg }}--}}
-       <forms></forms>
-
-<div>
-    <p><a data-toggle="animatedModal10">Click me for a modal</a></p>
-
-    <div class="reveal" id="exampleModal1" data-reveal>
-        <h1>Awesome. I Have It.</h1>
-        <p class="lead">Your couch. It is mine.</p>
-        <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <p><a data-open="exampleModal1">Click me for a modal</a></p>
 
 
+            <div class="row">
+                @foreach($products as $product)
+            <div class="columns large-6">
+               <a href="/client/login"><h6>{{ $product->name }} </h6></a><br/>
+              <p>  {{ $product->description }} </p>
+                <p>{{ $product->price }} </p>
+          <img src="{{ $product->image }}">
+                <button class="button expanded">Make Investment</button>
+
+
+            </div>
+                @endforeach
+        </div>
+
+        {{ $products->links() }}
     @endsection

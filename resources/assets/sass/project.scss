@@ -29,58 +29,36 @@ $form-radius: $global-radius;
   margin-left: 60%;
 }
 .side-navigation{
-  width: 150px;
-  background-color: #006666;
+  width: 15%;
+  background-color: #f5f5f5;
   display: block;
+  height: 700px;
 
 }
 .main-section
 {
   display: flex;
+  margin-left: 5px;
+  margin-top: 5px;
+  width: auto;
 }
+
+
 .content-area{
    margin-left: 100px;
    margin-top: 50px;
+  width: auto;
  }
-$include-html-nav-classes: $include-html-classes;
-
-// We use this to control padding.
-$side-nav-padding: rem-calc(14 0);
-
-// We use these to control list styles.
-$side-nav-list-type: none;
-$side-nav-list-position: inside;
-$side-nav-list-margin: rem-calc(0 0 7 0);
-
-// We use these to control link styles.
-$side-nav-link-color: $primary-color;
-$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
-$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
-$side-nav-font-size: rem-calc(14);
-$side-nav-font-weight: normal;
-$side-nav-font-weight-active: $side-nav-font-weight;
-$side-nav-font-family: $body-font-family;
-$side-nav-font-family-active: $side-nav-font-family;
-
-// We use these to control border styles
-$side-nav-divider-size: 1px;
-$side-nav-divider-style: solid;
-$side-nav-divider-color: scale-color(#fff, $lightness: 10%);
-
-
-.custom-sidenav-class {
-  @include side-nav(
-    // Border color of divider
-          $divider-color: '#ccc',
-            // Font size of nav items
-          $font-size:1.2em,
-            // Color of navigation links
-          $link-color:'#ccc',
-            // Color of navigation links on active
-          $link-color-active: '#444',
-            // Color of navigation links on hover
-          $link-color-hover: '#444'
-  );
+.text-area
+{
+  padding: 20px;
+  width: auto;
+  height: auto;
+}
+.login-styling{
+  background-color: #3adb76;
+  width: auto;
+  height: 800px;
 }
 //}
 //.bg-image{

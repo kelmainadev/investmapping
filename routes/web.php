@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','ClientController@products' );
 
 Auth::routes();
 
@@ -37,10 +35,11 @@ Route::group(['prefix' => 'client'], function () {
   Route::post('/password/reset', 'ClientAuth\ResetPasswordController@reset');
   Route::get('/password/reset', 'ClientAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'ClientAuth\ResetPasswordController@showResetForm');
-//  Route::get('/home','HomeController@index');
-});
-Route::get('/client/products','ClientController@index');
 
+});
+
+Route::get('/admin/products/edit_{id}','ProductController@edit');
+Route::post('/admin/products/post/{id}','ProductController@update');
 
 
 

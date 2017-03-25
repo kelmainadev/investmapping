@@ -9,4 +9,4 @@ Route::get('/home', function () {
 
     return view('client.home');
 })->name('home');
-
+Route::get('/products', 'ClientController@index');

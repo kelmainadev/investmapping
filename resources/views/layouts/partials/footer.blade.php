@@ -1,0 +1,1 @@
+<div id="copyright text-right" style="margin-top: 20px; background-color:#006666; text-align: center;height: 40px;">© Copyright 2013 Cytonn Invenstments</div>

@@ -8,7 +8,7 @@
     </div>
     <div class="content-area">
         <h3 style="text-align: center;"> add Products</h3>
-        {!! Form::open(['url' => url('/admin/product/store')]) !!}
+        {!! Form::open(['url' => url('/admin/product/update')]) !!}
 
          {{ Form::label('category', 'Category') }}
 

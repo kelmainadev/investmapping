@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-
+use Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 class ProductController extends Controller
 {
     public function __construct()
@@ -18,10 +20,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-$products = Product::all();
-
-return view('admin/viewproducts',['products'=>$products]);
-
+        $products = DB::table('products')->paginate(5);
+        return view('admin/viewproducts',['products'=>$products]);
     }
 
     /**
@@ -42,6 +42,7 @@ return view('admin/viewproducts',['products'=>$products]);
         $product = new Product;
         $product->category_id=$request->category_id;
         $product->name=$request->name;
+        $product->user_id= Auth::id();
         $product->price=$request->price;
         $product->description=$request->description;
 
@@ -49,39 +50,32 @@ return view('admin/viewproducts',['products'=>$products]);
         return redirect('admin/products')->with('saved_successfully','Products successfully saved');
 
     }
-
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $products = Product::where('id', $id)->get();
+        return view('admin.products.edit', ['products' => $products]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        if(Input::hasFile('image'))
+        {
+            $file= $request->file('image');
+            $file_name= $file->getClientOriginalName();
+            $image=$request->file('image')->move('images/productsimage', $file_name);
+
+            $image=$image->getPathname();
+        }
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $price = $request->input('price');
+
+        Product::where('id', $id)->update(['name'=>$name, 'description'=>$description, 'image'=>$image, 'price'=>$price ]);
+        return redirect('/admin/products/edit_'.$id);
     }
 
     /**
@@ -94,4 +88,5 @@ return view('admin/viewproducts',['products'=>$products]);
     {
         //
     }
+
 }

@@ -8,13 +8,8 @@
         @endif
     </div>
     {!! Form::open(['url' => url('/admin/categories/store')]) !!}
-
+    {{--{{Form::hidden('user_id', Auth::user()->user_id, array('class'=>'form')) }}--}}
     {{ Form::label('category', 'Category') }}
-    {{--<select name="categories_id" >--}}
-    {{--@foreach($categories as $category)--}}
-    {{--<option value="{{$category->id}}">{{$category->name}}</option>--}}
-    {{--@endforeach--}}
-    {{--</select>--}}
     {{ Form::label('name', 'Category  Name') }}
     {{Form::text('name', null, array('class'=>'form')) }}
     {{ Form::label('description', 'Category Description') }}
