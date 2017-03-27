@@ -1,11 +1,11 @@
 @extends('layouts.clientapp')
 
 @section('content')
-<div class="login-styling">
-    <div class="login-container">
-        <div class="bg-image">
-            <div class="row" style="margin-left: 40%;">
-                <div class="medium-4 medium-centered large-6 large-centered columns">
+    <div class="login-styling">
+        <div class="login-container">
+            <div class="bg-image">
+                <div class="row" style="margin-left: 40%;">
+                    <div class="medium-4 medium-centered large-6 large-centered columns">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/client/login') }}" style="background-color: whitesmoke;">
                         <div class="row column log-in-form">
                             {{ csrf_field() }}

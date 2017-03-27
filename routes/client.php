@@ -10,3 +10,8 @@ Route::get('/home', function () {
     return view('client.home');
 })->name('home');
 Route::get('/products', 'ClientController@index');
+Route::get('/counts/{id}','ClientController@selections');
+Route::get('/enquiries','ClientController@enquiries');
+Route::get('/investments','ClientController@investment');
+Route::get('/show/{id}','ClientController@show');
+Route::get('search','ClientController@search');

@@ -10,12 +10,12 @@
         <h3 style="text-align: center;"> add Products</h3>
         {!! Form::open(['url' => url('/admin/product/update')]) !!}
 
-         {{ Form::label('category', 'Category') }}
+        {{ Form::label('category', 'Category') }}
 
-        <select name="category_id" >
-        @foreach($categories as $category)
-        <option value="{{$category->id}}">{{$category->name}}</option>
-        @endforeach
+        <select name="category_id">
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
         </select>
         {{ Form::label('name', 'Product Name') }}
         {{Form::text('name', null, array('class'=>'form')) }}
@@ -27,8 +27,4 @@
         {{ Form::submit('Save',array('class'=>'button'))}}
         {!! Form::close() !!}
     </div>
-
-
-
-
 @endsection

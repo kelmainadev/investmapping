@@ -1053,6 +1053,24 @@ Vue.component('todo-item', {
     template: '<li>{{ todo.text }}</li>'
 });
 
+var redirect = new Vue({
+    el: '#redirect',
+    data: {
+        name: 'Redirection'
+    },
+    methods: {
+        redirectUser: function redirectUser(event) {
+            console.log("D12 World");
+            window.location.href = "client/counts/'.$product->id";
+            // if(event){
+            //     window.location.href="{{ url('client/counts/'.$product->id) }}"
+            // }
+        }
+
+    }
+
+});
+
 /***/ }),
 /* 11 */
 /***/ (function(module, exports) {

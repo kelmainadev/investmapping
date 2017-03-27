@@ -29,7 +29,7 @@ $form-radius: $global-radius;
   margin-left: 60%;
 }
 .side-navigation{
-  width: 15%;
+  width: 20%;
   background-color: #f5f5f5;
   display: block;
   height: 700px;
@@ -39,7 +39,7 @@ $form-radius: $global-radius;
 {
   display: flex;
   margin-left: 5px;
-  margin-top: 5px;
+  margin-top: 0px;
   width: auto;
 }
 
@@ -48,6 +48,7 @@ $form-radius: $global-radius;
    margin-left: 100px;
    margin-top: 50px;
   width: auto;
+  margin-right: 30px;
  }
 .text-area
 {
