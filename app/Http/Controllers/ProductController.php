@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ClientSelection;
 use Illuminate\Http\Request;
 use App\Product;
 use Auth;
@@ -56,5 +57,34 @@ class ProductController extends Controller
 
         Product::where('id', $id)->update(['name' => $name, 'description' => $description, 'image' => $image, 'price' => $price]);
         return redirect('/admin/products/edit_' . $id);
+    }
+
+    public function reports()
+    {
+        $products = Product::paginate(5)->sortByDesc('count');
+        return view('admin.reports', ['products' => $products] );
+
+    }
+
+    public function analytics(){
+        $products=Product::all();
+        $count= Product::all()->pluck('count')->toArray();
+        $name= Product::all()->pluck('id');
+        $nameArray = array();
+        foreach ($name as $item)
+        {
+            $nameArray[] = $item;
+        }
+
+        return view ('admin.analytics', [
+            'name' => json_encode($nameArray),
+            'count' => $count,
+            'products'=>$products
+        ]);
+
+    }
+    public function key(){
+        $products = Product::all();
+        return view('admin.analytics', ['products' => $products] );
     }
 }

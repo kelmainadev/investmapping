@@ -17,7 +17,7 @@
                         <p>  {{ substr($product->description, 0, rand(50,100) ) .'...'}}  </p>
                         <p> Price: {{ $product->price }} </p>
                         <img src="{{ $product->image }}">
-                        <a @click="productSelection({{ $product->id }})" href='show/{{ $product->id }}' class="button">Read More</a>
+                        <a @click="productSelection({{ $product->id }})"  class="button">Read More</a>
                         <br>
                         <hr/>
                         {{--<a href="{{ url('client/counts/'.$product->id) }}" ></a>--}}

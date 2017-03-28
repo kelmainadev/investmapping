@@ -29,26 +29,23 @@ class ClientController extends Controller
     public function selections($id)
     {
         $auth = Auth::id();
-
         //get count from products table
-
         $product = ClientSelection::where('product_id', $id)
             ->where('client_id', $auth)
             ->first();
         $pcount = Product::where('id', $id)->pluck('count');
         if ($product) {
-
             $client_count = ClientSelection::where('product_id', $id)->pluck('client_count');
             $count = $pcount[0] + 1;
             $client_count = $client_count[0] + 1;
-
+            dd($client_count);
             $user = Auth::id();
             ClientSelection::where('product_id', $id)
                 ->where('client_id', $user)
                 ->update(['count' => $count, 'client_count' => $client_count]);
-
             //update the products count
-            $productCount = Product::where('id', $id)->update(['count' => $count]);
+            $productCount = Product::where('id', $id)->update(['count' => $count,])
+                ->update(['client_count' => $client_count]);
             return response()->json(['count' => $productCount]);
         } else
 //            dd("created a new one");
@@ -59,9 +56,8 @@ class ClientController extends Controller
         $client->client_count = $client->client_count[0] + 1;
         $client->save();
         $count = $pcount[0] + 1;
-        $productCount = Product::where('id', $id)->update(['count' => $count]);
-
-        return response()->json(['count' => $productCount]);
+        Product::where('id', $id)->update(['count' => $count]);
+        return response()->json(['success' => $productCount]);
     }
 
 
@@ -86,20 +82,16 @@ class ClientController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $result = Product::where("name","LIKE", "%$search%")
-            ->orWhere("description","LIKE", "%$search%")
+        $result = Product::where("name", "LIKE", "%$search%")
+            ->orWhere("description", "LIKE", "%$search%")
             ->orWhere("price", "<=", $search)
             ->get();
 
-        if($result)
-        {
-            return view('client.search',['products'=>$result]);
-        }
-        else
-        {
+        if ($result) {
+            return view('client.search', ['products' => $result]);
+        } else {
 
         }
-
 
 
     }
