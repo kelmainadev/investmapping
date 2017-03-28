@@ -8,6 +8,7 @@ use App\ClientSelection;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class ClientController extends Controller
@@ -47,8 +48,8 @@ class ClientController extends Controller
                 ->update(['count' => $count, 'client_count' => $client_count]);
 
             //update the products count
-            Product::where('id', $id)->update(['count' => $count]);
-            return redirect('/client/products');
+            $productCount = Product::where('id', $id)->update(['count' => $count]);
+            return response()->json(['count' => $productCount]);
         } else
 //            dd("created a new one");
             $client = new ClientSelection;
@@ -58,14 +59,10 @@ class ClientController extends Controller
         $client->client_count = $client->client_count[0] + 1;
         $client->save();
         $count = $pcount[0] + 1;
-        Product::where('id', $id)->update(['count' => $count]);
-        return redirect('/client/products');
+        $productCount = Product::where('id', $id)->update(['count' => $count]);
 
+        return response()->json(['count' => $productCount]);
     }
-
-    /*
-     * Change the product clicks when a new user clicks it
-     */
 
 
     public function enquiries()
@@ -88,29 +85,23 @@ class ClientController extends Controller
 
     public function search(Request $request)
     {
-
         $search = $request->input('search');
-        $products = Product::all();
-        $results = where('description', 'LIKE', '%' . $search . '%');
-                            orWhere('price', 'LIKE', '%' . $search . '%');
-                            orWhere('name', 'LIKE', '%' . $search . '%')->get();
+        $result = Product::where("name","LIKE", "%$search%")
+            ->orWhere("description","LIKE", "%$search%")
+            ->orWhere("price", "<=", $search)
+            ->get();
+
+        if($result)
+        {
+            return view('client.search',['products'=>$result]);
+        }
+        else
+        {
+
+        }
 
 
-
-//        dd($request->input('prices'));
-
-//        $prices = $request->input('prices');
-//        $products = Product::all();
-//        $myProducts = array();
-//
-//        foreach($products as $product)
-//        {
-//            if($product->prices <= $prices)
-//                array_push($myProducts, $product);
-//        }
-
-        return view('client.search', ['products' => $results]);
 
     }
-
 }
+

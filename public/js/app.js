@@ -1054,7 +1054,7 @@ Vue.component('todo-item', {
 });
 
 var redirect = new Vue({
-    el: '#redirect',
+    el: '#app',
     data: {
         name: 'Redirection'
     },
@@ -1065,6 +1065,12 @@ var redirect = new Vue({
             // if(event){
             //     window.location.href="{{ url('client/counts/'.$product->id) }}"
             // }
+        },
+        productSelection: function productSelection(product_id) {
+            // console.log("Im alive");
+            axios.get('/client/counts/' + product_id).then(function (response) {
+                console.log(response.data);
+            });
         }
 
     }
