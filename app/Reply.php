@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inquiries extends Model
+class Reply extends Model
 {
-    protected $table = 'inquiries';
+    protected $table = 'replies';
 }

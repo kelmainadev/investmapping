@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Inquiry;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ClientSelection;
@@ -32,22 +33,20 @@ class ClientController extends Controller
         $auth = Auth::id();
         //get count from products table
         $product = ClientSelection::where('client_id', $auth)
-            ->where('product_id',$id)
+            ->where('product_id', $id)
             ->first();
         $pcount = Product::where('id', $id)->pluck('count');
+        $pcount = $pcount[0] + 1;
+        Product::where('id', $id)->update(['count' => $pcount]);
         if ($product) {
+//            dd("if");
             $client_count = ClientSelection::where('product_id', $id)->pluck('client_count');
-            $count = $pcount[0] + 1;
             $client_count = $client_count[0] + 1;
             $user = Auth::id();
-            ClientSelection::where('product_id', $id)
-                ->where('client_id', $user)
-                ->update(['count' => $count, 'client_count' => $client_count]);
-            //update the products count
-            $productCount = Product::where('id', $id)->update(['count' => $count]);
-            return response()->json(['count' => $productCount]);
+            ClientSelection::where('client_id', $user)
+                ->where('product_id', $id)
+                ->update(['client_count' => $client_count]);
         } else
-//            dd("created a new one");
             $client = new ClientSelection;
         $client->product_id = $id;
         $client->client_id = Auth::id();
@@ -65,17 +64,26 @@ class ClientController extends Controller
         $inquiries = new Inquiries();
         return view('client.enquiries');
     }
-
-    public function investment()
-    {
+    public function investment(){
         return view('client.investment');
+    }
+
+    public function investsearch(Request $request)
+    {
+        $search = $request->input('search');
+        $result = Product::where("price", '<=',$search)->get();
+        if ($result) {
+            return view('client.investsearch',['products'=>$result, 'years' => $_GET['years']]);
+        } else {
+          return('Please Try again');
+        }
     }
 
     public function show($id)
     {
         $products = Product::where('id', $id)->get();
 
-        return view('client.show', ['products']);
+        return view('client.show', ['products' => $products]);
 
     }
 
@@ -95,5 +103,8 @@ class ClientController extends Controller
 
 
     }
+
+
+
 }
 

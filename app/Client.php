@@ -38,4 +38,7 @@ class Client extends Authenticatable
     {
         $this->notify(new ClientResetPassword($token));
     }
+    public function inquiries(){
+        return $this->hasMany(Inquiry::class);
+    }
 }

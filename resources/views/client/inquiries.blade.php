@@ -19,7 +19,7 @@
         <div class="columns large-3">
             <h5>My recent Inquiries</h5>
             @foreach($inquiries as $inquiry)
-                <a href="#">{{ $inquiry->title }}</a> <hr>
+                <a href='show/inquiries/{{ $inquiry->id }}'>{{ $inquiry->title }}</a> <hr>
                 @endforeach
         </div>
     </div>
