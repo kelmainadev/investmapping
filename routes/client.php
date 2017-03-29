@@ -11,7 +11,9 @@ Route::get('/home', function () {
 })->name('home');
 Route::get('/products', 'ClientController@index');
 Route::get('/counts/{id}','ClientController@selections');
-Route::get('/enquiries','ClientController@enquiries');
+Route::get('/inquiries','InquiriesController@index');
 Route::get('/investments','ClientController@investment');
 Route::get('/show/{id}','ClientController@show');
 Route::get('search','ClientController@search');
+Route::post('store','InquiriesController@store');
+Route::get('myinquiries','InquiriesController@myinquiries');

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
+use App\Inquiries;
 
 class ClientController extends Controller
 {
@@ -30,22 +31,20 @@ class ClientController extends Controller
     {
         $auth = Auth::id();
         //get count from products table
-        $product = ClientSelection::where('product_id', $id)
-            ->where('client_id', $auth)
+        $product = ClientSelection::where('client_id', $auth)
+            ->where('product_id',$id)
             ->first();
         $pcount = Product::where('id', $id)->pluck('count');
         if ($product) {
             $client_count = ClientSelection::where('product_id', $id)->pluck('client_count');
             $count = $pcount[0] + 1;
             $client_count = $client_count[0] + 1;
-            dd($client_count);
             $user = Auth::id();
             ClientSelection::where('product_id', $id)
                 ->where('client_id', $user)
                 ->update(['count' => $count, 'client_count' => $client_count]);
             //update the products count
-            $productCount = Product::where('id', $id)->update(['count' => $count,])
-                ->update(['client_count' => $client_count]);
+            $productCount = Product::where('id', $id)->update(['count' => $count]);
             return response()->json(['count' => $productCount]);
         } else
 //            dd("created a new one");
@@ -56,13 +55,14 @@ class ClientController extends Controller
         $client->client_count = $client->client_count[0] + 1;
         $client->save();
         $count = $pcount[0] + 1;
-        Product::where('id', $id)->update(['count' => $count]);
-        return response()->json(['success' => $productCount]);
+        $productCount = Product::where('id', $id)->update(['count' => $count]);
+        return response()->json(['count' => $productCount]);
     }
 
 
-    public function enquiries()
+    public function inquiries()
     {
+        $inquiries = new Inquiries();
         return view('client.enquiries');
     }
 
@@ -75,7 +75,7 @@ class ClientController extends Controller
     {
         $products = Product::where('id', $id)->get();
 
-        return view('client.show', ['products' => $products]);
+        return view('client.show', ['products']);
 
     }
 

@@ -43,7 +43,7 @@ Route::post('/admin/products/post/{id}','ProductController@update');
 Route::get('/admin/reports','ProductController@reports');
 Route::get('/admin/analytics','ProductController@analytics');
 Route::get('/admin/clients','ProductController@clients');
-//Route::get('/admin/analytic','ProductController@key');
+
 
 
 
