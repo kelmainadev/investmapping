@@ -17,13 +17,13 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::Paginate(5);
         return view('client/products', ['products' => $products]);
     }
 
     public function products()
     {
-        $products = DB::table('products')->paginate(5);
+        $products = Product::paginate(6);
         return view('welcome', ['products' => $products]);
     }
 

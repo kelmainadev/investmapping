@@ -1,10 +1,16 @@
 @extends('layouts.client')
 
 @section('content')
-    @foreach($products as $product)
-  <h3> <a href="#"> {{ $product->name }} </a></h3>
-    <br>
-        {{ $product->description }}
+    <div class="content-area">
+        <div class="row">
+            <div class="columns large-9">
+            @foreach($products as $product)
+                <h3><a href="#"> <u>{{ $product->name }}</u> </a></h3>
+                <br>
+                <p>{{ $product->description }}</p>
 
-    @endforeach
-    @endsection
+            @endforeach
+            </div>
+        </div>
+    </div>
+@endsection

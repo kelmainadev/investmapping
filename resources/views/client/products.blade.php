@@ -9,18 +9,16 @@
         </form>
         <br>
         <div id="redirect">
-            <div class="row">
+            <div class="row" data-equalizer data-equalize-on="large" id="test-eq">
 
                 @foreach($products as $product)
-                    <div class="columns large-6">
+                    <div class="large-">
+                        <hr/>
                         <a href="/client/login"><h6>{{ $product->name }} </h6></a><br/>
-                        <p>  {{ substr($product->description, 0, rand(50,100) ) .'...'}}  </p>
+                        <p>  {{ substr($product->description, 0, rand(100,150) ) .'...'}}  </p>
                         <p> Price: {{ $product->price }} </p>
-                        <img src="{{ $product->image }}">
                         <a @click="productSelection({{ $product->id }})" href='show/{{ $product->id }}' class="button">Read More</a>
                         <br>
-                        <hr/>
-                        {{--<a href="{{ url('client/counts/'.$product->id) }}" ></a>--}}
                     </div>
                 @endforeach
             </div>
@@ -28,6 +26,6 @@
 
     </div>
 
-    {{--{{ $products->links() }}--}}
+    {{ $products->links() }}
 @endsection
 

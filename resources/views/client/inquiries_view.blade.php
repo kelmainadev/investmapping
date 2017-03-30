@@ -1,14 +1,17 @@
 @extends('layouts.client')
 
 @section('content')
-
-    <h2>{{ $inquiry->title }}</h2>
+<div class="content-area">
+    <a href="" ><u><h4>{{ $inquiry->title }}</h4></u></a>
     <br>
     {{ $inquiry->description }}
 
-<hr>
-    <p> Reply for your Issue</p>
+    <hr>
+    <h3> Reply for your Issue</h3>
     @foreach($replies as $reply)
-        <p>{{ $reply->title }}</p>
+        <a href=""><u><h4>{{ $reply->title }}</u></h4></a>
+        <p>{{ $reply->content }}</p>
     @endforeach
+</div>
+
     @endsection
