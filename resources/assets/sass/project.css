@@ -40,4 +40,12 @@
   width: auto;
   height: 800px; }
 
+.welcome-content {
+  margin-top: 30px;
+  border: solid #d3d3d3 1px;
+  display: flex; }
+
+.image-area {
+  width: auto; }
+
 /*# sourceMappingURL=project.css.map */

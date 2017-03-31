@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 use App\Inquiries;
 
+
 class ClientController extends Controller
 {
     public function index()
@@ -23,8 +24,9 @@ class ClientController extends Controller
 
     public function products()
     {
-        $products = Product::paginate(6);
-        return view('welcome', ['products' => $products]);
+        $products = Product::paginate(4);
+        $images = Product::whereNOTNULL('image')->get();
+        return view('welcome', ['products' => $products, 'images' => $images]);
     }
 
     //The code is used to enter details of how often items are clicked by users.
@@ -64,18 +66,20 @@ class ClientController extends Controller
         $inquiries = new Inquiries();
         return view('client.enquiries');
     }
-    public function investment(){
+
+    public function investment()
+    {
         return view('client.investment');
     }
 
     public function investsearch(Request $request)
     {
         $search = $request->input('search');
-        $result = Product::where("price", '<=',$search)->get();
+        $result = Product::orderBy('price', 'desc')->where("price", '<=', $search)->get();
         if ($result) {
-            return view('client.investsearch',['products'=>$result, 'years' => $_GET['years']]);
+            return view('client.investsearch', ['products' => $result, 'years' => $_GET['years']]);
         } else {
-          return('Please Try again');
+            return ('Please Try again');
         }
     }
 
@@ -84,6 +88,14 @@ class ClientController extends Controller
         $products = Product::where('id', $id)->get();
 
         return view('client.show', ['products' => $products]);
+
+    }
+
+    public function guestshow($id)
+    {
+        $products = Product::where('id', $id)->get();
+
+        return view('client.article', ['products' => $products]);
 
     }
 
@@ -100,10 +112,7 @@ class ClientController extends Controller
         } else {
 
         }
-
-
     }
-
 
 
 }

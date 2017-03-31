@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="content-area" data-equalizer data-equalize-on="large" id="test-eq">
+        <a class="button" href="/client/products">Back</a>
         <h2> Search Results</h2>
         <div class="row" data-equalizer data-equalize-on="large" id="test-eq">
             @foreach($products as $product)

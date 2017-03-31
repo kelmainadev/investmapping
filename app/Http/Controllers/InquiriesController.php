@@ -12,7 +12,7 @@ class InquiriesController extends Controller
 {
     public function index()
     {
-        $inquiries = Inquiry::where('client_id', Auth::id())->get();
+        $inquiries = Inquiry::orderBy('created_at', 'asc')->where('client_id', Auth::id())->get();
         return view('client.inquiries', ['inquiries' => $inquiries]);
 
     }

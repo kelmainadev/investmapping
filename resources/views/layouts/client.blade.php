@@ -32,7 +32,7 @@
             <div class="top-bar">
                 <div class="top-bar-left">
                     {{--<h3>{{ config('app.name', 'Lar') }}</h3>--}}
-                    <img src={{url('images/cytonn-investments.png')}} style="width=150px; height: 50px; float=right;">
+                    <img src="/images/cytonn-investments.png" style="width=80px; height: 60px; float=right;">
 
                 </div>
                 @if (Auth::guest())
@@ -90,10 +90,10 @@
             <div class="main-section">
                 <div class="side-navigation" >
                     <ul class="menu vertical">
-                        <li><a href="#"></i>Home</a></li> <hr>
+                        {{--<li><a href="#"></i>Home</a></li> <hr>--}}
                         <li><a href="{{ url('/client/products') }}"></i>products</a></li> <hr>
                         <li><a href="{{ url('/client/investments') }}">Investments</a></li><hr>
-                        <li><a href="{{ url('/client/enquiries') }}">Enquiries</a></li><hr>
+                        <li><a href="{{ url('/client/inquiries') }}">Enquiries</a></li><hr>
                         <li><a href="#">Notifications</a></li><hr>
                     </ul>
 

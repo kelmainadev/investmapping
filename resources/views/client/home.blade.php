@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{--@foreach($products as $product)--}}
+    {{--@foreach($products as $product)--}}
     {{--{{ $product->name }}--}}
     {{--@endforeach--}}
 @endsection

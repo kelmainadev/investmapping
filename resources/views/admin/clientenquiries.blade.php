@@ -7,7 +7,7 @@
                 <table>
                     <thead>
                     <tr>
-                        <th >enquiry Title</th>
+                        <th>enquiry Title</th>
                         <th>From</th>
                         <th>Content</th>
                         <th>Sent at</th>
@@ -15,14 +15,14 @@
                     </thead>
                     <tbody>
                     @foreach($inquiries as $inquiry)
-                    <tr>
-                        <td>{{ $inquiry->title }}</td>
-                        <td>{{ $inquiry['clients']->name }}</td>
-                        <td>{{ $inquiry->description }}</td>
-                        <td>{{ $inquiry->created_at->diffForHumans() }}</td>
-                        <td><a href="{{url('admin/reply_'.$inquiry->id)}}"> Reply</td>
+                        <tr>
+                            <td>{{ $inquiry->title }}</td>
+                            <td>{{ $inquiry['clients']->name }}</td>
+                            <td>{{ substr($inquiry->description,0,200) }}</td>
+                            <td>{{ $inquiry->created_at->diffForHumans() }}</td>
+                            <td><a href="{{url('admin/reply_'.$inquiry->id)}}"> Reply</td>
 
-                    </tr>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

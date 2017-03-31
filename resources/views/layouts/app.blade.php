@@ -11,6 +11,7 @@
         <title>{{ config('app.name', 'Lar') }}</title>
 
         <!-- Styles -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/project.css') }}" rel="stylesheet">
 
@@ -25,7 +26,8 @@
         <div id="forms">
         <div class="top-bar">
             <div class="top-bar-left">
-        <h3>{{ config('app.name', 'Lar') }}</h3>
+{{--        <h3>{{ config('app.name', 'Lar') }}</h3>--}}
+                <img src="/images/cytonn-investments.png" style="width=80px; height: 60px; float=right;">
         </div>
         <div class="top-bar-right">
             <ul class="menu dropdown">
@@ -73,6 +75,7 @@
 
 
         <!-- Scripts -->
+        @include('layouts.partials.sliderscript')
         <script src="{{ asset('js/app.js') }}"></script>
         <script> $(document).foundation();</script>
     </body>

@@ -61,30 +61,32 @@ class ProductController extends Controller
 
     public function reports()
     {
-        $products = Product::paginate(5)->sortByDesc('count');
-        return view('admin.reports', ['products' => $products] );
+        $products = Product::all()->sortByDesc('count');
+        return view('admin.reports', ['products' => $products]);
 
     }
 
-    public function analytics(){
-        $products=Product::all();
-        $count= Product::all()->pluck('count')->toArray();
-        $name= Product::all()->pluck('id');
+    public function analytics()
+    {
+        $products = Product::all();
+        $count = Product::all()->pluck('count')->toArray();
+        $name = Product::all()->pluck('id');
         $nameArray = array();
-        foreach ($name as $item)
-        {
+        foreach ($name as $item) {
             $nameArray[] = $item;
         }
 
-        return view ('admin.analytics', [
+        return view('admin.analytics', [
             'name' => json_encode($nameArray),
             'count' => $count,
-            'products'=>$products
+            'products' => $products
         ]);
 
     }
-    public function key(){
+
+    public function key()
+    {
         $products = Product::all();
-        return view('admin.analytics', ['products' => $products] );
+        return view('admin.analytics', ['products' => $products]);
     }
 }

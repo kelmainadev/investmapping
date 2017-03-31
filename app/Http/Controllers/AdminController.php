@@ -50,17 +50,18 @@ class AdminController extends Controller
         $reply = new Reply;
         $reply->title = $request->input('title');
         $reply->content = $request->input('content');
-        $reply->inquiry_id= $id;
-        $reply->user_id= Auth::id();
+        $reply->inquiry_id = $id;
+        $reply->user_id = Auth::id();
         $reply->save();
-        return view('admin.reply_inquiry',['replies'=>$replies]);
+        return view('admin.reply_inquiry', ['replies' => $replies]);
     }
-public function create_reply($id)
-{
-    $inquiries = Inquiry::where('id',$id)->get();
 
-    return view('admin.reply_inquiry',['inquiries'=>$inquiries]);
-}
+    public function create_reply($id)
+    {
+        $inquiries = Inquiry::where('id', $id)->get();
+
+        return view('admin.reply_inquiry', ['inquiries' => $inquiries]);
+    }
 
 
     public function inquiries()

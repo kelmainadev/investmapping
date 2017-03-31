@@ -2,20 +2,19 @@
 
 @section('content')
     <div class="content-area">
-
-        @foreach($products as $product)
-            <div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Product name</th>
-                        <th> Product Description</th>
-                        <th>Product price</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Product name</th>
+                    <th> Product Description</th>
+                    <th>Product price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($products as $product)
                     <tr>
                         <td>{{$product->name}}</td>
                         <td>{{$product->description}}</td>
@@ -24,10 +23,11 @@
                         <td><a href="admin/product/delete" class="button alert">Delete</a></td>
 
                     </tr>
-                    </tbody>
-                </table>
-            </div>
-        @endforeach
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
 
     </div>
     {{ $products->links() }}

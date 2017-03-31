@@ -2,10 +2,8 @@
 
 @section('content')
     @foreach($products as $product)
-        {{ $product->id }}
-
         <div class="content-area">
-            <h3 style="text-align: center;"> Update Products</h3>
+            <a href=""><u><h3 style="text-align: center;"> Update Products</h3></u></a>
             <div>
                 {!! Form::open(
                     array(

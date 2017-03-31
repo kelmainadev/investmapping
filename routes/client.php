@@ -20,3 +20,4 @@ Route::get('myinquiries', 'InquiriesController@myinquiries');
 Route::get('show/inquiries/{inquiry}','InquiriesController@show');
 Route::get('replies','InquiriesController@replies');
 Route::get('investsearch','ClientController@investsearch');
+Route::post('/send','EmailController@send');

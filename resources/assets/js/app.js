@@ -62,14 +62,16 @@ const redirect = new Vue({
             redirectUser: function(event){
                 console.log("D12 World");
                 window.location.href="client/counts/'.$product->id";
-                // if(event){
-                //     window.location.href="{{ url('client/counts/'.$product->id) }}"
-                // }
             },
             productSelection: function (product_id) {
                 // console.log("Im alive");
                 axios.get('/client/counts/' + product_id).then(function (response) {
                     console.log(response.data);
+                });
+            },
+            Sendmail: function (){
+                axios.post('/client/send' , {title: 'my title', description: 'my description'}).then(function (response) {
+                    console.log(response.data)
                 });
             }
 

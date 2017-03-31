@@ -12,6 +12,7 @@
 */
 
 Route::get('/','ClientController@products' );
+Route::get('/images','ClientController@images' );
 
 Auth::routes();
 
@@ -46,6 +47,7 @@ Route::get('/admin/clients','ProductController@clients');
 Route::get('/admin/inquiries','AdminController@inquiries');
 Route::get('/admin/reply_{id}','AdminController@create_reply');
 Route::post('/admin/replies/{id}','AdminController@replies');
+Route::get('/products/{id}','ClientController@guestshow');
 
 
 

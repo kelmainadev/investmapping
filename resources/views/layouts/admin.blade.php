@@ -9,7 +9,7 @@
                 <!-- CSRF Token -->
                 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                <title>{{ config('app.name', 'Laravel') }}</title>
+                <title>{{ config('app.name', '') }}</title>
 
                 <!-- Styles -->
                 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
                 <div>
                     <div class="top-bar">
                         <div class="top-bar-left">
-                            <img src="./images/cytonn-investments.png" style="width=80px; height: 50px; float=right;">
+                            <img src="/images/cytonn-investments.png" style="width=80px; height: 60px; float=right;">
                         </div>
                             @if (Auth::guest())
 
@@ -91,13 +91,12 @@
                     <div class="main-section">
                         <div class="side-navigation">
                             <ul class="menu vertical">
-                                <li ><a href="#">Home</a></li>
                                 <li ><a href="/admin/categories"></i>Categories</a></li>
                                 <li><a href="/admin/products">Products</a></li>
                                 <li><a href="/admin/products/view">View Products</a></li>
-                                <li><a href="#">Client Enquiries</a></li>
-                                <li><a href="#">Client Notifications</a></li>
-                                <li><a href="#">products</a></li>
+                                <li><a href="/admin/inquiries">Client Enquiries</a></li>
+                                <li><a href="/admin/analytics">Product Analytics</a></li>
+                                <li><a href="/admin/reports">Products Perfomance</a></li>
                             </ul>
                         </div>
                         <div >

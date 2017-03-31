@@ -11,7 +11,7 @@
             <h6>Graph Key</h6>
             @foreach($products as $product)
                 <p>{{$product->id}}.{{ $product->name }}</p>
-                @endforeach
+            @endforeach
         </div>
     </div>
 
@@ -69,7 +69,7 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: true
                         }
                     }]
                 }

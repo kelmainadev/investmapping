@@ -7,8 +7,10 @@
                 <div class="success callout">Products successfully saved</div>
             @endif
         </div>
+        <div>
+            <a href=""><u><h3> Create a Category</h3></u></a>
+        </div>
         {!! Form::open(['url' => url('/admin/categories/store')]) !!}
-        {{ Form::label('category', 'Category') }}
         {{ Form::label('name', 'Category  Name') }}
         {{Form::text('name', null, array('class'=>'form')) }}
         {{ Form::label('description', 'Category Description') }}

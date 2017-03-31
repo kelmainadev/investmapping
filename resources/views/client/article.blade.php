@@ -1,8 +1,7 @@
-@extends('layouts.client')
+@extends('layouts.clientapp')
 
 @section('content')
     <div class="content-area">
-        <a class="button" href="/client/products">Back</a>
         <div class="row">
             <div class="columns large-9">
                 @foreach($products as $product)

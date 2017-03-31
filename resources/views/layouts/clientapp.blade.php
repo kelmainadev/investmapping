@@ -24,7 +24,7 @@
 <div id="app">
     <div class="top-bar">
         <div class="top-bar-left">
-            <h3>{{ config('app.name', 'Lar') }}</h3>
+            {{--<h3>{{ config('app.name', 'Lar') }}</h3>--}}
         </div>
         <div class="top-bar-right">
             <ul class="menu dropdown">
